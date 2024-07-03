@@ -194,13 +194,24 @@ const initializeServer = async () => {
         const calendarUrl = `webcal://${req.headers.host}/foodfeed/${id}`;
         return `<p>${mensaMap[id]}: <a href="${calendarUrl}">${calendarUrl}</a></p>`;
       }).join('');
-
+    
       res.send(`
-        <h1>Mensi Food Feed iCal</h1>
-        <p>Use these URLs to subscribe to the calendar feeds:</p>
-        ${calendarUrls}
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Mensi Food Feed iCal</title>
+        </head>
+        <body>
+          <h1>Mensi Food Feed iCal</h1>
+          <p>Click on these URLs to subscribe to the calendar feeds:</p>
+          ${calendarUrls}
+        </body>
+        </html>
       `);
     });
+    
 
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
