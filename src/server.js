@@ -7,6 +7,7 @@ const winston = require('winston');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const { MongoClient } = require('mongodb');
 const cron = require('node-cron');
+const { log } = require('console');
 
 const dbUri = process.env.DB_URI;
 
@@ -169,15 +170,16 @@ const initializeServer = async () => {
       try {
         const mensaID = req.params.mensaID;
         if (!mensaMap[mensaID]) {
+          logger.error('Mensa ID not found:', mensaID);
           return res.status(404).send('Mensa ID not found');
         }
-
+        
         const mensaName = mensaMap[mensaID];
         const collection = db.collection(`mensa_${mensaID}`);
         const meals = await collection.find({}).toArray();
 
         const icsContent = await getIcs(meals, req.url, mensaName);
-
+        logger.info(`Sending iCal content for ${mensaName} (ID: ${mensaID})`);
         res.setHeader('Content-Disposition', 'attachment; filename=calendar.ics');
         res.setHeader('Content-Type', 'text/calendar');
         res.send(icsContent);
@@ -190,7 +192,7 @@ const initializeServer = async () => {
     app.use('/', (req, res) => {
       const calendarUrls = Object.keys(mensaMap).map(id => {
         const calendarUrl = `webcal://${req.headers.host}/foodfeed/${id}`;
-        return `<p><a href="${calendarUrl}">${mensaMap[id]}: ${calendarUrl}</a></p>`;
+        return `<p>${mensaMap[id]}: <a href="${calendarUrl}">${calendarUrl}</a></p>`;
       }).join('');
 
       res.send(`
