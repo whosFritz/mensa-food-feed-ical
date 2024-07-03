@@ -196,7 +196,7 @@ const initializeServer = async () => {
       }).join('');
 
       res.send(`
-        <h1>ICS Feed Generator</h1>
+        <h1>Mensi Food Feed iCal</h1>
         <p>Use these URLs to subscribe to the calendar feeds:</p>
         ${calendarUrls}
       `);
