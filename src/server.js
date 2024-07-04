@@ -19,12 +19,14 @@ if (!fs.existsSync(logDirectory)) {
 }
 
 // Reminder
+/* deactivated cause it's bloat
 let alarms = [];
 alarms.push({
   action: 'display',
   description: 'Erinnerung ans Essen',
   trigger: { minutes: 30, before: true },
 });
+*/
 
 // Set up winston logger
 const logger = winston.createLogger({
@@ -132,8 +134,7 @@ const convertToICalEvents = (jsonEvents, mensaName) => {
     description: meals.map(meal => `${meal.name} - ${meal.description}`).join('\n------------\n'),
     start: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 11, 30],
     end: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 12, 0],
-    status: 'confirmed',
-    alarms: alarms
+    status: 'confirmed'
   }));
 };
 
