@@ -208,6 +208,8 @@ const initializeServer = async () => {
           <h1>Mensi Food Feed iCal</h1>
           <p>Click on these URLs to subscribe to the calendar feeds:</p>
           ${calendarUrls}
+          <p>Author: whosfritz</p>
+          <p>Source: <a href="https://github.com/whosFritz/mensi-food-feed-ical">GitHub</a></p>
         </body>
         </html>
       `);
