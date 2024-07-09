@@ -2,7 +2,7 @@
 
 This project provides an ICS feed for various Mensa locations, fetching meal data periodically and storing it in a MongoDB database. The data is served as ICS files via an Express.js API.
 
-The meal data is provided by the [MensaHhub API](https://github.com/olech2412/MensaHub/tree/master/MensaHub-Gateway), which is a free and open API for meal data for Leipzig's student cafeterias in Germany.
+The meal data is provided by the [MensaHub API](https://github.com/olech2412/MensaHub/tree/master/MensaHub-Gateway), which is a free and open API for meal data for Leipzig's student cafeterias in Germany.
 
 ## Features
 
