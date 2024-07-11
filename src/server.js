@@ -132,7 +132,7 @@ const convertToICalEvents = (jsonEvents, mensaName) => {
     title: mensaName,
     description: meals.map(meal => {
       const firstPrice = meal.price.match(/\d+,\d+ €/)[0];
-      return `${meal.category}:\n${meal.name} - ${meal.description} - ${firstPrice}`;
+      return `${meal.category}:\n${meal.name}\n${meal.description}\n${firstPrice}`;
     }).join('\n------------\n'),
     start: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 11, 30],
     end: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 12, 0],
