@@ -128,15 +128,18 @@ const groupMealsByDate = (meals) => {
 
 const convertToICalEvents = (jsonEvents, mensaName) => {
   const mealsByDate = groupMealsByDate(jsonEvents);
-
   return Object.entries(mealsByDate).map(([date, meals]) => ({
     title: mensaName,
-    description: meals.map(meal => `${meal.name} - ${meal.description}`).join('\n------------\n'),
+    description: meals.map(meal => {
+      const firstPrice = meal.price.match(/\d+,\d+ €/)[0];
+      return `${meal.category}:\n${meal.name}\n${meal.description}\n${firstPrice}`;
+    }).join('\n------------\n'),
     start: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 11, 30],
     end: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 12, 0],
     status: 'confirmed'
   }));
 };
+
 
 const getIcs = async (events, feedUrl, mensaName) => {
   try {
