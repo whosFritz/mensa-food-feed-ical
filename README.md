@@ -7,8 +7,8 @@ The meal data is provided by the [MensaHub API](https://github.com/olech2412/Men
 ## Supported Platforms
 
 - Calendar MacOS and iOS:
-  - if u add the calendar to iCloud, it will be synced, but u will be prompted to enter userid and hash on every new device which is connected to your iCloud account when openeing the calendar app 
-
+  - if u add the calendar to iCloud, it will be synced
+    
 ## Features
 
 - Fetches meal data for multiple Mensa locations.
