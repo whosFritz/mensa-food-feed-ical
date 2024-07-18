@@ -1,3 +1,4 @@
+// services/icalService.js
 const generateIcs = require('ics-service/generate-ics');
 const logger = require('../config/logger');
 

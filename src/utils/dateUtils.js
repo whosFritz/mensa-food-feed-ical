@@ -1,3 +1,4 @@
+// src/utils/dateUtils.js
 const getFormattedDate = (date) => {
     const d = new Date(date);
     const month = '' + (d.getMonth() + 1);
