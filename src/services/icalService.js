@@ -1,4 +1,3 @@
-// services/icalService.js
 const generateIcs = require('ics-service/generate-ics');
 const logger = require('../config/logger');
 
@@ -18,7 +17,8 @@ const convertToICalEvents = (jsonEvents, mensaName) => {
   return Object.entries(mealsByDate).map(([date, meals]) => ({
     title: mensaName,
     description: meals.map(meal => {
-      const firstPrice = meal.price.match(/\d+,\d+ €/)[0];
+      const priceMatch = meal.price ? meal.price.match(/\d+,\d+ €/) : null;
+      const firstPrice = priceMatch ? priceMatch[0] : 'Price not available';
       return `${meal.category}:\n${meal.name}\n${meal.description}\n${firstPrice}`;
     }).join('\n------------\n'),
     start: [parseInt(date.split('-')[0]), parseInt(date.split('-')[1]), parseInt(date.split('-')[2]), 11, 30],

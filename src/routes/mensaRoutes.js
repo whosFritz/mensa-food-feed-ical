@@ -1,11 +1,11 @@
-// src/routes/mensaRoutes.jsf
+// routes/mensaRoutes.js
 const express = require('express');
 const { getMensaIcal, getAllMensaUrls } = require('../controllers/mensaController');
 
-const mensaRoutes = (db) => {
+const mensaRoutes = () => {
   const router = express.Router();
 
-  router.get('/foodfeed/:mensaID', (req, res) => getMensaIcal(req, res, db));
+  router.get('/foodfeed/:mensaID', getMensaIcal);
   router.use('/', getAllMensaUrls);
 
   return router;

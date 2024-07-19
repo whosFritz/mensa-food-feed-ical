@@ -1,9 +1,9 @@
-// controllers/mensaController.js
 const logger = require('../config/logger');
-const { mensaMap } = require('../services/mensaService');
+const { mensaMap, mensaHubFoodFetcher } = require('../services/mensaService');
 const { getIcs } = require('../services/icalService');
+const { getFormattedDate } = require('../utils/dateUtils');
 
-const getMensaIcal = async (req, res, db) => {
+const getMensaIcal = async (req, res) => {
   try {
     const mensaID = req.params.mensaID;
     if (!mensaMap[mensaID]) {
@@ -12,8 +12,16 @@ const getMensaIcal = async (req, res, db) => {
     }
     
     const mensaName = mensaMap[mensaID];
-    const collection = db.collection(`mensa_${mensaID}`);
-    const meals = await collection.find({}).toArray();
+    const today = new Date();
+    const startDate = getFormattedDate(new Date(today.setDate(today.getDate() - 4))); // 4 days back
+    const endDate = getFormattedDate(new Date(today.setDate(today.getDate() + 7))); // 7 days forward from today
+
+    const meals = await mensaHubFoodFetcher(startDate, endDate, mensaID);
+
+    if (!meals || meals.length === 0) {
+      logger.error(`No meals found for mensa ${mensaName} (ID: ${mensaID})`);
+      return res.status(404).send('No meals found for the specified date range');
+    }
 
     const icsContent = await getIcs(meals, req.url, mensaName);
     logger.info(`Sending iCal content for ${mensaName} (ID: ${mensaID})`);
