@@ -1,4 +1,5 @@
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+// src/services/mensaService.js
+const fetch = require('node-fetch');
 const logger = require('../config/logger');
 const { getFormattedDate } = require('../utils/dateUtils');
 

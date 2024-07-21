@@ -1,3 +1,4 @@
+// src/controllers/mensaController.js
 const logger = require('../config/logger');
 const { mensaMap, mensaHubFoodFetcher } = require('../services/mensaService');
 const { getIcs } = require('../services/icalService');
@@ -10,13 +11,18 @@ const getMensaIcal = async (req, res) => {
       logger.error('Mensa ID not found:', mensaID);
       return res.status(404).send('Mensa ID not found');
     }
-    
+
     const mensaName = mensaMap[mensaID];
     const today = new Date();
-    const startDate = getFormattedDate(new Date(today.setDate(today.getDate() - 4))); // 4 days back
-    const endDate = getFormattedDate(new Date(today.setDate(today.getDate() + 7))); // 7 days forward from today
+    const startDate = new Date();
+    startDate.setDate(today.getDate() - 4); // 4 days back
+    const endDate = new Date();
+    endDate.setDate(today.getDate() + 7); // 7 days forward from today
 
-    const meals = await mensaHubFoodFetcher(startDate, endDate, mensaID);
+    const formattedStartDate = getFormattedDate(startDate);
+    const formattedEndDate = getFormattedDate(endDate);
+
+    const meals = await mensaHubFoodFetcher(formattedStartDate, formattedEndDate, mensaID);
 
     if (!meals || meals.length === 0) {
       logger.error(`No meals found for mensa ${mensaName} (ID: ${mensaID})`);
