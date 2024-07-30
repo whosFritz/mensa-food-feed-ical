@@ -1,7 +1,6 @@
 // src/services/mensaService.js
 const fetch = require('node-fetch');
 const logger = require('../config/logger');
-const { getFormattedDate } = require('../utils/dateUtils');
 
 const mensaMap = {
   '1': 'Mensa Academica',
