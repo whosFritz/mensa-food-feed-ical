@@ -1,4 +1,4 @@
-// __tests__/dateUtils.test.js
+// tests/dateUtils.test.js
 const { getFormattedDate } = require('../utils/dateUtils');
 
 describe('getFormattedDate', () => {

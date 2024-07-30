@@ -1,4 +1,4 @@
-// __tests__/mensaService.test.js
+// tests/mensaService.test.js
 const fetch = require('node-fetch');
 const { mensaHubFoodFetcher } = require('../services/mensaService');
 const logger = require('../config/logger');

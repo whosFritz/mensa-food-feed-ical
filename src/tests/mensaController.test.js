@@ -1,4 +1,4 @@
-// src/tests/mensaController.test.js
+// tests/mensaController.test.js
 const { getMensaIcal } = require('../controllers/mensaController');
 const { mensaHubFoodFetcher } = require('../services/mensaService');
 const { getIcs } = require('../services/icalService');
