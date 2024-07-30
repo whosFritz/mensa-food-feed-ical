@@ -43,7 +43,16 @@ const getMensaIcal = async (req, res) => {
 const getAllMensaUrls = (req, res) => {
   const calendarUrls = Object.keys(mensaMap).map(id => {
     const calendarUrl = `webcal://${req.headers.host}/foodfeed/${id}`;
-    return `<p>${mensaMap[id]}: <a href="${calendarUrl}">${calendarUrl}</a></p>`;
+    return `
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${mensaMap[id]}</h5>
+            <a href="${calendarUrl}" class="btn btn-primary">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    `;
   }).join('');
 
   res.send(`
@@ -52,14 +61,24 @@ const getAllMensaUrls = (req, res) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Mensi Food Feed iCal</title>
+      <title>Mensa Food Feed iCal</title>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-      <h1>Mensi Food Feed iCal</h1>
-      <p>Click on these URLs to subscribe to the calendar feeds:</p>
-      ${calendarUrls}
-      <p>Author: whosfritz</p>
-      <p>Source: <a href="https://github.com/whosFritz/mensi-food-feed-ical">GitHub</a></p>
+      <div class="container">
+        <h1 class="my-4">Mensa Food Feed iCal</h1>
+        <p>Click on these URLs to subscribe to the calendar feeds:</p>
+        <div class="row">
+          ${calendarUrls}
+        </div>
+        <footer class="mt-4">
+          <p>Author: whosfritz</p>
+          <p>Source: <a href="https://github.com/whosFritz/mensa-food-feed-ical">GitHub</a></p>
+        </footer>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
     </html>
   `);
