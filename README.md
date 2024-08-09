@@ -1,4 +1,4 @@
-# Mensi Food Feed iCal
+# Mensa Food Feed iCal
 
 This project provides an ICS feed for various Mensa locations, fetching meal data periodically and storing it in a MongoDB database. The data is served as ICS files via an Express.js API.
 
