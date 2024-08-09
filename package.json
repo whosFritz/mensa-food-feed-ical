@@ -1,6 +1,6 @@
 {
-  "name": "mensi-food-ical",
-  "version": "1.0.0",
+  "name": "mensa-food-ical",
+  "version": "1.1.0",
   "description": "",
   "main": "src/server.js",
   "scripts": {

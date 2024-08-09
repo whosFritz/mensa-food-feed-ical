@@ -30,8 +30,8 @@ The meal data is provided by the [MensaHub API](https://github.com/olech2412/Men
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/whosFritz/mensi-food-feed-ical.git
-   cd mensi-food-feed-ical
+   git clone https://github.com/whosFritz/mensa-food-feed-ical.git
+   cd mensa-food-feed-ical
     ```
 
 2. Set up environment variables:

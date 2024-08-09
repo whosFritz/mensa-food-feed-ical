@@ -73,7 +73,7 @@ const getAllMensaUrls = (req, res) => {
         </div>
         <footer class="mt-4">
           <p>Author: whosfritz</p>
-          <p>Source: <a href="https://github.com/whosFritz/mensi-food-feed-ical">GitHub</a></p>
+          <p>Source: <a href="https://github.com/whosFritz/mensa-food-feed-ical">GitHub</a></p>
         </footer>
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
