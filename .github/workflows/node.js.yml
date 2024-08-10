@@ -15,19 +15,13 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x] # Specify the Node.js versions to test against
+        node-version: [16.x, 18.x, 20.x] # Specify the Node.js versions to test against
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run tests
-      run: npm test
+        node-version: 20
+        cache: 'npm'
+    - run: npm ci
+    - run: npm test
