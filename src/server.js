@@ -1,5 +1,4 @@
 // src/server.js
-require('dotenv').config();
 const express = require('express');
 const logger = require('./config/logger');
 const mensaRoutes = require('./routes/mensaRoutes');
