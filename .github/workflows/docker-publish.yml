@@ -1,9 +1,9 @@
-name: Build and Push Docker Image on Merge to Main
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
-      - main  # Workflow wird ausgeführt, wenn auf den 'main' Branch gepusht wird.
+      - main  
 
 jobs:
   build-and-push:
