@@ -68,6 +68,7 @@ const getAllMensaUrls = (req, res) => {
       <div class="container">
         <h1 class="my-4">Mensa Food Feed iCal</h1>
         <p>Click on these URLs to subscribe to the calendar feeds:</p>
+        <p>Working on MacOS, iOS and IPad OS</p>
         <div class="row">
           ${calendarUrls}
         </div>
