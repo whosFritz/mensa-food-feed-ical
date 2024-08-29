@@ -6,7 +6,7 @@ The meal data is provided by the [MensaHub API](https://github.com/olech2412/Men
 
 ## Supported Platforms
 
-- Calendar MacOS and iOS:
+- Calendar MacOS, iOS and IPad OS:
   - if u add the calendar to iCloud, it will be synced
     
 ## Features
