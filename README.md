@@ -12,11 +12,7 @@ The meal data is provided by the [MensaHub API](https://github.com/olech2412/Men
 ## Features
 
 - Fetches meal data for multiple Mensa locations.
-- Stores meal data in a MongoDB database.
-- Replaces old meals with updated data to avoid duplications.
 - Provides an ICS feed for each Mensa.
-- Logs activity and errors using Winston.
-- Uses a cron job to update meal data every 10 minutes.
 - Dockerized for easy deployment.
 
 ## Requirements
@@ -40,8 +36,6 @@ The meal data is provided by the [MensaHub API](https://github.com/olech2412/Men
     ```env
     NODE_PORT_INTERN=24ereqew
     NODE_PORT_EXTERN=13123313123
-    MONGODB_PORT=213123123132
-    DB_URI=mongodb://mongodb-food:213123123132/databasename
     ````
 
 3. Build and start the Docker containers:
